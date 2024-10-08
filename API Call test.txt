@@ -1,0 +1,24 @@
+Invoke-WebRequest -Uri http://localhost:5000/api/query -Method POST -Headers @{"Content-Type"="application/json"} -Body '{"username": "esxlegacy_freedomear", "password": "e4c4347e07e513bfebacede22e6ff2f84e9cc526", "host": "rpjxl.h.filess.io", "database": "esxlegacy_freedomear", "port": 3307, "query": "SELECT * FROM addon_account"}'
+
+
+
+Invoke-WebRequest -Uri http://localhost:5000/api/query -Method POST -Headers @{"Content-Type"="application/json"} -Body '{"username": "esxlegacy_freedomear", "password": "e4c4347e07e513bfebacede22e6ff2f84e9cc526", "host": "rpjxl.h.filess.io", "database": "esxlegacy_freedomear", "port": 3307, "query": "DELETE FROM addon_account WHERE id = 1"
+
+$response = Invoke-WebRequest -Uri http://localhost:5000/api/delete -Method POST -Headers @{"Content-Type"="application/json"} -Body '{"username": "esxlegacy_freedomear", "password": "e4c4347e07e513bfebacede22e6ff2f84e9cc526", "host": "rpjxl.h.filess.io", "database": "esxlegacy_freedomear", "port": 3307, "query": "DELETE FROM addon_account WHERE bank_savings = 1"}'
+
+
+Hi, thanks for reaching out to us. This is Kim from the Bubble Support team. 😊 Yes, it is possible for users to connect their hosted database to Bubble and perform CRUD operations. Users can integrate their external SQL databases, such as PostgreSQL, MySQL, and Microsoft SQL, using the SQL Database Connector Plugin. This plugin enables the execution of SQL queries, which can be used for CRUD operations within the Bubble app. Additionally, for databases that offer a JSON-based, RESTful web API, the API Connector can be utilized to connect and interact with the database, allowing for CRUD operations as well.
+To create an option for users to add their database credentials and connect to the database, you would typically use these connectors. Once connected, users can update the database directly from the Bubble application. For more information on how to use these connectors, you can refer to the API Connector guide and the SQL Database Connector documentation.
+
+I hope this helps. Please let me know if I am missing any context here or if you have any follow-up questions.
+5:05 pm
+Profile image for BubbleBot
+You rated the conversation 
+Thanks for letting us know
+Great answer, just what I was looking for.
+Hello Kim, thanks alot for this awesome answer! I am going to dive into it and see if I can make it work :)
+
+
+https://manual.bubble.io/help-guides/integrations/api/the-api-connector
+
+https://manual.bubble.io/help-guides/integrations/sql-database-connector
