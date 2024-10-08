@@ -47,6 +47,39 @@ app.listen(port, () => {
     console.log(`Server running on port ${port}`);
 });
 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+app.post('/api/list-tables', (req, res) => {
+    const { username, password, host, database, port } = req.body;
+
+    const connection = mysql.createConnection({
+        host: host,
+        user: username,
+        password: password,
+        database: database,
+        port: port || 3306
+    });
+
+    connection.connect((err) => {
+        if (err) {
+            return res.status(500).json({ message: "Connection failed", error: err.message });
+        }
+
+        // Query to list all tables
+        connection.query('SHOW TABLES', (error, results) => {
+            if (error) {
+                return res.status(500).json({ message: "Failed to retrieve tables", error: error.message });
+            }
+
+            // Format the result to return just the table names
+            const tableNames = results.map((row) => Object.values(row)[0]);
+            res.json({ message: "Tables retrieved successfully", tables: tableNames });
+        });
+    });
+});
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 app.post('/api/query', (req, res) => {
     const { username, password, host, database, port, query } = req.body;
 
